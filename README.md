@@ -19,7 +19,7 @@ ansible-vault encrypt .htpasswd
 
 Ansible 
 ===========
-This part consists of a host inventory and 2 playbooks. 
+This part consists of a host inventory and a playbook. 
 
 hosts
 -------
@@ -40,24 +40,12 @@ landing page for your very own PyPI server.
 
 You can add Python packages to the server simply 
 
-test.yml
------------
-
-
-
-
 environment variable PYPI_AUTHENTICATE
 ----------------------------------------
  list of (case-insensitive) actions to authenticate. Default to update
  but we set it to update,download,list while running the container
 
-Adding Internal Packages
-------------------------
 
-Internal packages may be uploaded to this PyPI server quite easily. The first
-step is to create a user account:
-
-    htpasswd -s /srv/pypi/.htpasswd yourusername
 
 Adding Third Party Packages
 ---------------------------
