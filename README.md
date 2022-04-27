@@ -4,7 +4,7 @@ PyPI Server
 
 [![](https://images.microbadger.com/badges/image/codekoala/pypi.svg)](https://microbadger.com/images/codekoala/pypi "Get your own image badge on microbadger.com")
 
-This is a ansible playbook which runs an simple PyPI server that can be used to host internal packages and
+This is a ansible playbook which runs a simple PyPI server that can be used to host internal packages and
 versions of packages that are suitable for use with proprietary products.
 
 .htpasswd via ansible vault 
