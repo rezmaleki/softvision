@@ -14,6 +14,7 @@ default .htpasswd
 the password is 'soft*******123'
 
 to encrypt your own .htpasswd file use
+
 ansible-vault encrypt .htpasswd
 
 Ansible 
