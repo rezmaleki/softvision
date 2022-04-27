@@ -7,20 +7,18 @@ PyPI Server
 This is a ansible playbook which runs an simple PyPI server that can be used to host internal packages and
 versions of packages that are suitable for use with proprietary products.
 
-Ansible 
-===========
-This part consists of a host inventory and 2 playbooks. 
-
-
-ansible vault 
+.htpasswd via ansible vault 
 --------------------
 .htpasswd file will go through the ansible vault
 default .htpasswd
 the password is 'soft*******123'
 
 to encrypt your own .htpasswd file use
-ansible-vault encrypt /$PATH/.htpasswd
+ansible-vault encrypt .htpasswd
 
+Ansible 
+===========
+This part consists of a host inventory and 2 playbooks. 
 
 hosts
 -------
