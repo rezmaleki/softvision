@@ -71,4 +71,4 @@ as:
 
 HOW TO RUN
 ----------------
-ansible-playbook --ask-vault-pass -i hosts  playbook.yml
+ansible-playbook --ask-vault-pass -i hosts  deploy.yml
