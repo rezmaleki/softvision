@@ -1,0 +1,68 @@
+---
+- hosts: target
+  gather_facts: true
+  become: yes
+  tasks:
+    - name: Deploying PyPi server
+      debug:
+        msg: Starting Deployment
+    - name: Upgrade all packages
+      yum:
+         name: '*'
+         state: latest
+    - name: Install yum utils
+      yum:
+        name: yum-utils
+        state: latest
+
+    - name: Install device-mapper-persistent-data
+      yum:
+        name: device-mapper-persistent-data
+        state: latest
+
+    - name: Install lvm2
+      yum:
+        name: lvm2
+        state: latest
+    - name: Install epel-release
+      yum:
+        name: epel-release
+        state: latest
+    - name: Install pip
+      yum:
+        name: python-pip
+        state: latest
+
+    - name: "Configuring docker-ce repo"
+      get_url:
+          url: https://download.docker.com/linux/centos/docker-ce.repo
+          dest: /etc/yum.repos.d/docker-ce.repo
+          mode: 0644
+    - name: " Installing Docker latest version"
+      yum:
+          name: docker-ce
+          state: present
+    - name: " Starting and Enabling Docker service"
+      service:
+          name: docker
+          state: started
+          enabled: yes
+##############################################################    
+    - name: Creating /srv/pypi
+      file:
+         path: /srv/pypi
+         state: directory	 
+    - name: ensure file exists
+      copy:
+         content: ""
+         dest: /srv/pypi/.htpasswd
+         force: no
+    - name: copy
+      copy:
+         src=.htpasswd 
+         dest=/srv/pypi/.htpasswd
+       
+  #  - name: Pull pypi  docker image 
+  #    shell: docker pull codekoala/pypi
+    - name: run  pypi container
+      shell: docker run -d --rm -e PYPI_AUTHENTICATE='update,download,list'  -h pypi.local -v /srv/pypi:/srv/pypi:rw -p 8080:80 --name pypi  codekoala/pypi
