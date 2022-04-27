@@ -72,3 +72,6 @@ as:
 HOW TO RUN
 ----------------
 ansible-playbook --ask-vault-pass -i hosts  deploy.yml
+
+    pip install -d /srv/pypi pkgname
+
